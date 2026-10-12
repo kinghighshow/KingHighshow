@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sultan Atanda</title>
+<meta name="description" content="Sultan Atanda designs and builds websites, machine learning models and data dashboards. Biomedical engineer and Applied AI student in Waterloo, Ontario. Available for freelance projects.">
+<meta property="og:title" content="Sultan Atanda | AI/ML Engineer">
+<meta property="og:description" content="Websites, machine learning and data work by Sultan Atanda. Available for freelance projects and part-time roles.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f5a43'/%3E%3Ctext x='32' y='45' font-family='Helvetica,Arial,sans-serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23fbfbf9' letter-spacing='-2'%3ESA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one centred 1120px column. Typographic hero with portrait, then
+   alternating product-style project showcases, then quiet editorial lists. */
+:root{
+  --bg:#fbfbf9; --surface:#f1f1ed; --raised:#ffffff;
+  --fg:#181b1a; --muted:#5b625f; --faint:#8a918d;
+  --line:#e2e2dc; --accent:#1f5a43; --accent-soft:#e3ece6;
+  --sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --max:1120px; --nav:56px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e100f; --surface:#171a19; --raised:#1d201f;
+  --fg:#ecede9; --muted:#a0a8a4; --faint:#747c78;
+  --line:#2a2e2c; --accent:#7cc6a0; --accent-soft:#1b2b23; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e100f; --surface:#171a19; --raised:#1d201f;
+  --fg:#ecede9; --muted:#a0a8a4; --faint:#747c78;
+  --line:#2a2e2c; --accent:#7cc6a0; --accent-soft:#1b2b23; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"ss01"}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{margin:0;font-weight:600;text-wrap:balance;letter-spacing:-0.025em}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+section,[id]{scroll-margin-top:calc(var(--nav) + 16px)}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--fg);color:var(--bg);padding:8px 12px;border-radius:6px;z-index:50}
+.skip:focus{left:16px}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.mark{font-weight:600;font-size:16px;letter-spacing:-0.01em}
+.mark span{color:var(--faint);font-weight:500}
+.links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
+.links a{transition:color .15s}
+.links a:hover{color:var(--fg)}
+.btn-sm{border:1px solid var(--line);color:var(--fg)!important;padding:6px 12px;border-radius:7px;font-weight:500}
+.btn-sm:hover{border-color:var(--fg)}
+.menu-btn{display:none;background:none;border:0;color:var(--fg);font:inherit;font-size:14px;padding:8px 0;cursor:pointer}
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .links{display:none;position:absolute;left:0;right:0;top:var(--nav);flex-direction:column;align-items:stretch;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);padding:8px clamp(16px,4vw,32px) 20px}
+  .links.open{display:flex}
+  .links a{padding:12px 0;font-size:17px;color:var(--fg);border-bottom:1px solid var(--line)}
+  .links .btn-sm{margin-top:14px;text-align:center;padding:12px;border-bottom:1px solid var(--line)}
+}
+
+/* Hero */
+.hero{padding-block:clamp(56px,9vw,112px) clamp(48px,7vw,88px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(32px,6vw,80px);align-items:end}
+.hero h1{font-size:clamp(48px,8.6vw,104px);line-height:.95;letter-spacing:-0.05em;font-weight:600}
+.hero .role{margin-top:22px;font-size:clamp(20px,2.4vw,26px);line-height:1.3;letter-spacing:-0.015em;color:var(--fg);font-weight:500}
+.hero .role em{font-style:normal;color:var(--muted)}
+.hero .lede{margin-top:18px;max-width:34em;color:var(--muted);font-size:18px}
+.meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted)}
+.meta span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+.ctas{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font-size:15px;font-weight:500;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{background:var(--accent)}
+.btn-ghost{border:1px solid var(--line);color:var(--fg)}
+.btn-ghost:hover{border-color:var(--fg)}
+.portrait{margin:0;width:100%;max-width:300px;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:var(--surface)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.portrait{max-width:200px;grid-row:1}}
+
+/* Facts strip */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fact{padding:26px 24px 26px 0}
+.fact+.fact{padding-left:24px;border-left:1px solid var(--line)}
+.fact b{display:block;font-size:30px;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+.fact span{display:block;margin-top:4px;font-size:14px;color:var(--muted);line-height:1.4}
+@media (max-width:820px){.facts .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){padding-left:0;border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* Section heads */
+.sec{padding-block:clamp(72px,10vw,128px) 0}
+.sec-head{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;margin-bottom:clamp(40px,6vw,64px);align-items:baseline}
+.sec-head h2{font-size:clamp(32px,4.6vw,52px);line-height:1.05;letter-spacing:-0.04em}
+.sec-head p{margin-top:14px;color:var(--muted);max-width:36em;font-size:18px}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr;gap:12px}}
+
+/* Featured projects */
+.project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,5vw,64px);align-items:start;padding-block:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.project:nth-of-type(even) .p-visual{order:-1}
+.status{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--muted)}
+.status .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:4px}
+.project h3{margin-top:16px;font-size:clamp(28px,3.4vw,40px);line-height:1.08;letter-spacing:-0.035em}
+.project .sub{margin-top:10px;font-size:19px;color:var(--muted);line-height:1.45;letter-spacing:-0.01em}
+.p-body{margin-top:24px;display:grid;gap:16px;font-size:16px}
+.p-body dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+.p-body dd{margin:0;color:var(--fg);max-width:36em}
+.stack{color:var(--muted)!important;font-size:15px}
+.p-links{margin-top:22px;display:flex;flex-wrap:wrap;gap:20px;font-size:15px;font-weight:500}
+.arrow{color:var(--accent);display:inline-flex;gap:6px;align-items:center}
+.arrow:hover{text-decoration:underline;text-underline-offset:4px}
+.p-visual{background:var(--surface);border-radius:22px;padding:clamp(22px,3.4vw,36px);min-width:0}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 20px}
+.stats b{display:block;font-size:clamp(34px,4vw,46px);font-weight:600;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.4}
+.note{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.5}
+.flow-title{margin:28px 0 12px}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0}
+.flow li{position:relative;background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:12px 12px 13px;font-size:13px;line-height:1.35;color:var(--muted);margin-right:18px}
+.flow li:last-child{margin-right:0}
+.flow li strong{display:block;color:var(--fg);font-weight:600;font-size:13.5px;margin-bottom:3px}
+.flow li:not(:last-child)::after{content:"";position:absolute;right:-14px;top:50%;width:10px;height:1px;background:var(--faint)}
+.flow li:not(:last-child)::before{content:"";position:absolute;right:-14px;top:calc(50% - 3px);border:3px solid transparent;border-left:4px solid var(--faint);transform:translateX(7px)}
+.modules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.modules div{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14px;font-weight:500}
+.modules div small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:2px}
+.modules .base{grid-column:1/-1;text-align:center;background:transparent;border-style:dashed;font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--muted)}
+@media (max-width:900px){
+  .project{grid-template-columns:1fr}
+  .project:nth-of-type(even) .p-visual{order:0}
+}
+@media (max-width:560px){
+  .flow{grid-template-columns:1fr!important;gap:14px}
+  .flow li{margin-right:0}
+  .flow li:not(:last-child)::after{right:auto;left:22px;top:auto;bottom:-12px;width:1px;height:10px}
+  .flow li:not(:last-child)::before{display:none}
+  .modules{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* More work */
+.more-head{margin-top:clamp(56px,8vw,88px);margin-bottom:20px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.more-head h3{font-size:24px;letter-spacing:-0.025em}
+.more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.more article{padding:24px 24px 28px 0;border-bottom:1px solid var(--line);min-width:0}
+.more article:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--line)}
+.more .yr{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em}
+.more h4{margin:10px 0 8px;font-size:18px;font-weight:600;letter-spacing:-0.015em;line-height:1.25}
+.more p{font-size:15px;color:var(--muted);line-height:1.5}
+.more .stack{margin-top:12px;font-size:13px;font-family:var(--mono)}
+@media (max-width:900px){.more{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .more article:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .more article:nth-child(even){padding-left:24px;border-left:1px solid var(--line)}}
+@media (max-width:560px){.more{grid-template-columns:1fr}.more article:nth-child(even){padding-left:0;border-left:0}}
+
+/* About */
+.about{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px}
+.about-copy{max-width:40em;display:grid;gap:20px}
+.about-copy p:first-child{font-size:clamp(22px,2.6vw,28px);line-height:1.35;letter-spacing:-0.02em;font-weight:500}
+.about-copy p{font-size:18px;color:var(--muted)}
+.about-copy p:first-child{color:var(--fg)}
+.langs{margin-top:8px;font-size:15px;color:var(--muted)}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+
+/* Lists: experience, education */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1.4fr);gap:24px;padding-block:28px;border-bottom:1px solid var(--line)}
+.row .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.row h3{font-size:20px;letter-spacing:-0.02em;line-height:1.25}
+.row .org{margin-top:4px;color:var(--muted);font-size:15px}
+.row ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15.5px;color:var(--muted)}
+.row li{padding-left:16px;position:relative}
+.row li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--faint)}
+.row p{font-size:15.5px;color:var(--muted)}
+@media (max-width:820px){.row{grid-template-columns:1fr;gap:10px}}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,64px)}
+.two h3.colh{font-size:13px;font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:16px}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:15.5px}
+.list li span:last-child{color:var(--muted);font-family:var(--mono);font-size:13px;white-space:nowrap;padding-top:2px}
+.list li b{font-weight:500}
+.list li small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.pub{margin-top:40px;background:var(--surface);border-radius:22px;padding:clamp(22px,3.4vw,36px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end}
+.pub h4{margin:10px 0 8px;font-size:clamp(20px,2.4vw,26px);font-weight:600;letter-spacing:-0.025em;line-height:1.2;max-width:28em}
+.pub p{color:var(--muted);font-size:15px}
+@media (max-width:820px){.two{grid-template-columns:1fr}.pub{grid-template-columns:1fr}}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.skills div{padding:24px 24px 0 0;min-width:0}
+.skills div+div{padding-left:24px;border-left:1px solid var(--line)}
+.skills h3{font-size:16px;letter-spacing:-0.01em;margin-bottom:14px}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:15.5px;color:var(--muted)}
+@media (max-width:900px){.skills{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}.skills div:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:480px){.skills{grid-template-columns:1fr}.skills div+div{padding-left:0;border-left:0}}
+
+/* Contact */
+.contact{padding-block:clamp(88px,12vw,148px) clamp(64px,9vw,104px)}
+.contact h2{font-size:clamp(40px,7vw,84px);line-height:1;letter-spacing:-0.05em;max-width:12em}
+.contact h2 span{color:var(--faint)}
+.contact .lede{margin-top:22px;font-size:19px;color:var(--muted);max-width:30em}
+.channels{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.channels>div,.channels>a{padding:20px 20px 22px 0;border-bottom:1px solid var(--line);min-width:0;display:block}
+.channels>*+*{padding-left:20px!important;border-left:1px solid var(--line)}
+.channels .v{margin-top:6px;font-size:17px;font-weight:500;display:flex;align-items:center;gap:10px;flex-wrap:wrap;overflow-wrap:anywhere}
+.channels a:hover .v{color:var(--accent)}
+.copy{font:inherit;font-size:12.5px;font-family:var(--mono);background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 8px;cursor:pointer}
+.copy:hover{color:var(--fg);border-color:var(--fg)}
+@media (max-width:820px){.channels{grid-template-columns:1fr}.channels>*+*{padding-left:0!important;border-left:0}}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13.5px;color:var(--muted)}
+footer nav{display:flex;gap:20px}
+footer a:hover{color:var(--fg)}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.services article{padding:28px 24px 0 0;min-width:0;display:flex;flex-direction:column}
+.services article+article{padding-left:24px;border-left:1px solid var(--line)}
+.services h3{font-size:21px;letter-spacing:-0.02em;line-height:1.2}
+.services p{margin-top:10px;font-size:15.5px;color:var(--muted)}
+.services ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;font-size:14.5px}
+.services ul li{padding-left:16px;position:relative}
+.services ul li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--faint)}
+.proof{margin-top:auto;padding-top:20px;font-size:14px;color:var(--muted)}
+.proof a{color:var(--accent);font-weight:500}
+.proof a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:980px){.services{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.services article:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:560px){.services{grid-template-columns:1fr}.services article+article{padding-left:0;border-left:0}}
+.process{margin-top:clamp(48px,7vw,72px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;padding:0;counter-reset:step}
+.process li{background:var(--surface);border-radius:18px;padding:22px;counter-increment:step;min-width:0}
+.process li::before{content:"Step " counter(step);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.process b{display:block;margin-top:10px;font-size:17px;font-weight:600;letter-spacing:-0.015em}
+.process span{display:block;margin-top:6px;font-size:14.5px;color:var(--muted);line-height:1.45}
+@media (max-width:900px){.process{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.process{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Sultan Atanda, back to top">Sultan Atanda</a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="links" id="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a class="btn-sm" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Sultan Atanda</h1>
+        <p class="role">AI/ML Engineer <em>with a biomedical engineering background.</em></p>
+        <p class="lede">I design and build websites, machine learning models and data tools that solve real problems. My background in engineering means I start with the need, work carefully with the data and ship things people actually use.</p>
+        <div class="meta">
+          <span><i class="dot" aria-hidden="true"></i>Available for freelance projects and part-time roles</span>
+          <span>Applied AI &amp; ML student, Conestoga College</span>
+          <span>Waterloo, Ontario, Canada</span>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#work">Explore my work</a>
+          <a class="btn btn-ghost" href="#contact">Work with me</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="portrait.jpg" alt="Portrait of Sultan Atanda" width="640" height="800" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <div class="facts" aria-label="At a glance">
+    <div class="wrap">
+      <div class="fact"><b>First Class</b><span>B.Eng. Biomedical Engineering</span></div>
+      <div class="fact"><b>97%</b><span>Real-time accuracy, waste sorting prototype</span></div>
+      <div class="fact"><b>6 staff</b><span>use my lab software every day</span></div>
+      <div class="fact"><b>1 paper</b><span>Peer-reviewed, Healthcraft Frontiers 2025</span></div>
+    </div>
+  </div>
+
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Services</span>
+        <div>
+          <h2>What I can do for you.</h2>
+          <p>Each service is backed by work you can see on this page.</p>
+        </div>
+      </div>
+      <div class="services">
+        <article>
+          <h3>Websites and landing pages</h3>
+          <p>Clean, fast sites designed from scratch, never from a template.</p>
+          <ul><li>Design in Figma</li><li>Responsive build, HTML, CSS, JavaScript, React</li><li>Accessible and search friendly</li><li>Launch on your own domain</li></ul>
+          <p class="proof">Proof: this site and <a href="#more">Kampuz Connect</a></p>
+        </article>
+        <article>
+          <h3>Machine learning and computer vision</h3>
+          <p>Models that classify, predict or detect, trained and tested on your data.</p>
+          <ul><li>Image classification</li><li>Predictive models</li><li>Small-device inference on Raspberry Pi</li><li>Clear evaluation and limits</li></ul>
+          <p class="proof">Proof: <a href="#intellibin">IntelliBin</a>, published 2025</p>
+        </article>
+        <article>
+          <h3>Data analysis and dashboards</h3>
+          <p>Turn messy spreadsheets and records into answers you can act on.</p>
+          <ul><li>Cleaning and preparation</li><li>Exploratory analysis</li><li>Interactive Plotly charts</li><li>Power BI and Tableau</li></ul>
+          <p class="proof">Proof: <a href="#road-safety">Road Safety Analysis</a></p>
+        </article>
+        <article>
+          <h3>Custom business software</h3>
+          <p>Internal tools that replace paper and spreadsheets for small teams.</p>
+          <ul><li>Desktop and web apps</li><li>Records, tracking and reporting</li><li>Local or cloud data storage</li><li>Built around your workflow</li></ul>
+          <p class="proof">Proof: <a href="#lab-manager">Lab Manager</a>, used daily</p>
+        </article>
+      </div>
+      <ol class="process" aria-label="How a project runs">
+        <li><b>Understand</b><span>A short call to learn the goal, the users and what success looks like.</span></li>
+        <li><b>Plan</b><span>A written scope, timeline and fixed quote before any work starts.</span></li>
+        <li><b>Build</b><span>Regular previews so you can steer early, not after it is finished.</span></li>
+        <li><b>Hand over</b><span>Clean code, a launch, and a walkthrough so you own what you paid for.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Selected work</span>
+        <div>
+          <h2>Things I’ve built.</h2>
+          <p>Computer vision on small hardware, models trained on real laboratory data, and software that people rely on at work.</p>
+        </div>
+      </div>
+
+      <!-- Project 1 -->
+      <article class="project" id="intellibin">
+        <div>
+          <div class="status"><span class="tag">Published research</span><span>Final-year project · 2025</span></div>
+          <h3>IntelliBin</h3>
+          <p class="sub">A hospital waste sorter that sees each item, classifies it on a Raspberry Pi and drops it into the right bin.</p>
+          <dl class="p-body">
+            <div><dt>Problem</dt><dd>Hospital waste is often sorted by hand, and mixing categories creates infection and disposal risks for staff.</dd></div>
+            <div><dt>What I did</dt><dd>As first author, I assembled the dataset, fine-tuned MobileNetV2 into five hospital waste categories, deployed it on the Pi and wired the camera, ultrasonic sensor, stepper and servo motors into one cycle.</dd></div>
+            <div><dt>Recognition</dt><dd>Overall Best Project and Best Department Project, Biomedical Engineering, 2025.</dd></div>
+            <div><dt>Stack</dt><dd class="stack">Python, TensorFlow / TensorFlow Lite, MobileNetV2, OpenCV, Raspberry Pi 4B (4 GB), OV5647 camera</dd></div>
+          </dl>
+          <div class="p-links">
+            <a class="arrow" href="https://www.acadlore.com/article/HF/2025_3_3/hf030302" target="_blank" rel="noopener">Read the paper ↗</a>
+          </div>
+        </div>
+        <div class="p-visual" aria-label="IntelliBin results and pipeline">
+          <div class="stats">
+            <div><b>97%</b><span>Accuracy in a 100-item real-time test</span></div>
+            <div><b>8–12 s</b><span>From detection to deposit, per item</span></div>
+            <div><b>6,868</b><span>Training images, 1,475 captured by our team</span></div>
+            <div><b>5</b><span>Hospital waste categories</span></div>
+          </div>
+          <p class="label flow-title">How one item moves through it</p>
+          <ol class="flow" style="--n:4">
+            <li><strong>Detect</strong>Ultrasonic sensor notices an item</li>
+            <li><strong>Capture</strong>OV5647 camera takes a frame</li>
+            <li><strong>Classify</strong>MobileNetV2 runs on the Pi</li>
+            <li><strong>Sort</strong>Stepper and servo route it</li>
+          </ol>
+          <p class="note">Prototype results from controlled testing. Pharmaceutical waste was the weakest class at 85%. Not clinically validated.</p>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project">
+        <div>
+          <div class="status"><span class="tag">Internship project</span><span>GOMYCODE · 2024</span></div>
+          <h3>Breast Cancer Detection</h3>
+          <p class="sub">A convolutional neural network trained on screening records from a working pathology laboratory.</p>
+          <dl class="p-body">
+            <div><dt>Problem</dt><dd>Explore whether a model trained on local pathology data could help flag likely cancer cases for closer review.</dd></div>
+            <div><dt>What I did</dt><dd>Prepared the laboratory records, built and trained the CNN from scratch, evaluated it on held-out data and presented the work at the internship Demo Day.</dd></div>
+            <div><dt>Recognition</dt><dd>Best Project, GOMYCODE Data Science Internship, 2024.</dd></div>
+            <div><dt>Stack</dt><dd class="stack">Python, TensorFlow / Keras, Pandas, NumPy, scikit-learn</dd></div>
+          </dl>
+        </div>
+        <div class="p-visual">
+          <div class="stats">
+            <div><b>98.7%</b><span>Classification accuracy on test data</span></div>
+            <div><b>Real</b><span>Data from Ultramedikx Pathology Lab</span></div>
+          </div>
+          <p class="label flow-title">Approach</p>
+          <ol class="flow" style="--n:4">
+            <li><strong>Collect</strong>Lab screening records</li>
+            <li><strong>Prepare</strong>Clean, label, split</li>
+            <li><strong>Train</strong>CNN built from scratch</li>
+            <li><strong>Evaluate</strong>Held-out test set</li>
+          </ol>
+          <p class="note">A learning project. It has not been clinically validated or used for diagnosis.</p>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project" id="lab-manager">
+        <div>
+          <div class="status"><span class="tag">In daily use</span><span>Ongoing</span></div>
+          <h3>Ultramedikx Lab Manager</h3>
+          <p class="sub">Desktop software that runs the everyday work of a pathology laboratory, from sample intake to the final report.</p>
+          <dl class="p-body">
+            <div><dt>Problem</dt><dd>A busy pathology lab needs one reliable place for patient records, samples, results, reports and stock.</dd></div>
+            <div><dt>What I did</dt><dd>Designed and built the application, with a focus on usability, efficient workflows and local data storage.</dd></div>
+            <div><dt>Impact</dt><dd>Used by six laboratory staff in their daily operations.</dd></div>
+            <div><dt>Stack</dt><dd class="stack">React, Electron, HTML, CSS, SQLite</dd></div>
+          </dl>
+        </div>
+        <div class="p-visual">
+          <p class="label" style="margin-bottom:14px">What the app covers</p>
+          <div class="modules">
+            <div>Patients<small>Records and history</small></div>
+            <div>Samples<small>Intake and tracking</small></div>
+            <div>Results<small>Entry and review</small></div>
+            <div>Reports<small>Printable output</small></div>
+            <div>Inventory<small>Reagents and stock</small></div>
+            <div>Admin<small>Staff workflows</small></div>
+            <div class="base">SQLite on the local machine</div>
+          </div>
+          <p class="note">Screenshots with sample data coming soon.</p>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project" id="road-safety">
+        <div>
+          <div class="status"><span class="tag">Academic</span><span>2025–2026</span></div>
+          <h3>Road Safety Data Analysis</h3>
+          <p class="sub">Two projects asking the same question: what conditions come before road incidents?</p>
+          <dl class="p-body">
+            <div><dt>Accident risk model, 2025</dt><dd>A predictive analytics project combining traffic density, weather, time of day and historical accident records to flag high-risk road conditions.</dd></div>
+            <div><dt>Autonomous vehicle incidents, 2026</dt><dd>Team coursework at Conestoga College. I cleaned and explored public robotaxi incident records and built a reusable visualizer class for the team’s charts.</dd></div>
+            <div><dt>Stack</dt><dd class="stack">Python, Pandas, Jupyter</dd></div>
+          </dl>
+        </div>
+        <div class="p-visual">
+          <p class="label" style="margin-bottom:12px">Analysis workflow</p>
+          <ol class="flow" style="--n:4">
+            <li><strong>Clean</strong>Fix types, gaps, duplicates</li>
+            <li><strong>Explore</strong>Distributions and trends</li>
+            <li><strong>Features</strong>Weather, time, density</li>
+            <li><strong>Model</strong>Score road conditions</li>
+          </ol>
+          <p class="note">Both are academic projects. Neither is a deployed crash prediction system.</p>
+        </div>
+      </article>
+
+      <!-- More work -->
+      <div class="more-head" id="more">
+        <h3>More work</h3>
+        <a class="arrow" href="https://github.com/kinghighshow" target="_blank" rel="noopener">All code on GitHub ↗</a>
+      </div>
+      <div class="more">
+        <article>
+          <span class="yr">2025 · Security</span>
+          <h4>Network Intrusion Detection</h4>
+          <p>A Random Forest model that spots XSS, SQL injection and brute-force patterns in network traffic.</p>
+          <p class="stack">Python · scikit-learn</p>
+        </article>
+        <article>
+          <span class="yr">2025–2026 · Web design</span>
+          <h4>Kampuz Connect</h4>
+          <p>A campus marketplace demo designed and built during my web design internship at Aptech.</p>
+          <p class="stack">HTML · CSS · JavaScript · Git</p>
+        </article>
+        <article>
+          <span class="yr">2024 · Imaging</span>
+          <h4>Histology Image Cleanup</h4>
+          <p>A tool that removes background from histology slides and improves tissue clarity and contrast.</p>
+          <p class="stack">Python · OpenCV</p>
+        </article>
+        <article>
+          <span class="yr">2024 · Speech</span>
+          <h4>Pathology Dictation</h4>
+          <p>Turns a pathologist’s spoken descriptions into structured text using speech recognition and NLP.</p>
+          <p class="stack">Python · Speech recognition · NLP</p>
+        </article>
+        <article>
+          <span class="yr">2024 · Mobile</span>
+          <h4>SmartMeal</h4>
+          <p>A meal planning and reminder app for people managing diabetes, with nutrition tracking.</p>
+          <p class="stack">Mobile app</p>
+        </article>
+        <article>
+          <span class="yr">2026 · Coursework</span>
+          <h4>Applied AI Labs</h4>
+          <p>Team notebooks at Conestoga on KNN, decision trees, classification metrics and streaming data.</p>
+          <p class="stack">Python · scikit-learn · PostgreSQL</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="wrap about">
+      <span class="label">About</span>
+      <div class="about-copy">
+        <p>I’m a biomedical engineering graduate who builds with machine learning and software.</p>
+        <p>Engineering shaped how I work. I start with the real need, look closely at the data, build something practical and then check whether it actually works. That habit carried from maintaining biomedical equipment to training models on laboratory data.</p>
+        <p>My projects so far cover computer vision, healthcare data, laboratory software and predictive modelling. I’m now studying Applied Artificial Intelligence and Machine Learning at Conestoga College in Waterloo.</p>
+        <p>I care most about technology that solves useful problems, especially where engineering, data and good design meet.</p>
+        <p class="langs">I speak English, Yoruba and Hausa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Experience</span>
+        <div><h2>Where I’ve worked.</h2></div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <span class="when">Oct 2025 – Mar 2026</span>
+          <div><h3>Web Design Intern</h3><p class="org">Aptech Nigeria</p></div>
+          <ul>
+            <li>Designed and built Kampuz Connect, a campus marketplace demo, in HTML, CSS and JavaScript.</li>
+            <li>Applied UI/UX principles and used Git and GitHub for version control and collaboration.</li>
+          </ul>
+        </div>
+        <div class="row">
+          <span class="when">Mar 2025 – Sept 2025</span>
+          <div><h3>National Ambassador</h3><p class="org">GOMYCODE</p></div>
+          <ul>
+            <li>Helped organize two webinars and one workshop, each reaching about 180 students.</li>
+            <li>Promoted technology education through student outreach, leading to five course registrations.</li>
+          </ul>
+        </div>
+        <div class="row">
+          <span class="when">Jul 2024 – Oct 2024</span>
+          <div><h3>Data Science Intern</h3><p class="org">GOMYCODE</p></div>
+          <ul>
+            <li>Built data science and machine learning solutions on real-world datasets in a project-based programme.</li>
+            <li>Built a breast cancer detection model from pathology lab data and won Best Project at Demo Day.</li>
+          </ul>
+        </div>
+        <div class="row">
+          <span class="when">Aug 2023 – Nov 2024</span>
+          <div><h3>Engineering Assistant</h3><p class="org">Krecool Nigeria Limited</p></div>
+          <ul>
+            <li>Assisted with installation, calibration, assembly, troubleshooting and repair of biomedical and technical equipment.</li>
+            <li>Supported preventive and corrective maintenance, testing, inspection and fault diagnosis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education & recognition -->
+      <div class="two" style="margin-top:clamp(56px,8vw,88px)">
+        <div>
+          <h3 class="colh">Education</h3>
+          <ul class="list">
+            <li><div><b>Graduate Certificate, Applied AI and Machine Learning</b><small>Conestoga College, Waterloo · In progress</small></div><span>2026–27</span></li>
+            <li><div><b>B.Eng. Biomedical Engineering, First Class</b><small>Abiola Ajimobi Technical University, Ibadan</small></div><span>2021–25</span></li>
+          </ul>
+          <h3 class="colh" style="margin-top:36px">Certificates</h3>
+          <ul class="list">
+            <li><div><b>Data Science</b><small>GOMYCODE</small></div><span></span></li>
+            <li><div><b>Power BI</b><small>GOMYCODE</small></div><span></span></li>
+            <li><div><b>UI/UX Design</b><small>eHA Academy</small></div><span></span></li>
+            <li><div><b>Web Designing</b><small>Aptech Nigeria</small></div><span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="colh">Recognition</h3>
+          <ul class="list">
+            <li><div><b>Overall Best Project</b><small>Biomedical Engineering final-year projects, for IntelliBin</small></div><span>2025</span></li>
+            <li><div><b>Best Department Project</b><small>Hospital-specific waste segregation system</small></div><span>2025</span></li>
+            <li><div><b>Best Project</b><small>GOMYCODE Data Science Internship</small></div><span>2024</span></li>
+          </ul>
+          <h3 class="colh" style="margin-top:36px">Leadership</h3>
+          <ul class="list">
+            <li><div><b>President</b><small>Biomedical Engineering Students Society (NABETS)</small></div><span></span></li>
+            <li><div><b>Vice President</b><small>Student Energy, Tech-U Chapter</small></div><span></span></li>
+            <li><div><b>Director of Academics</b><small>Muslim Student Society</small></div><span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div>
+          <span class="label">Publication · Healthcraft Frontiers 3(3), 2025</span>
+          <h4>Hospital-Specific Automated Waste Segregation for High-Accuracy Real-Time Classification</h4>
+          <p><b style="color:var(--fg);font-weight:500">Atanda, S. A.</b>, Abdulrasaq, S. O., Akinde, O. K., Ajagbe, S. A. and Aworinde, A. K. · DOI 10.56578/hf030302</p>
+        </div>
+        <a class="btn btn-ghost" href="https://www.acadlore.com/article/HF/2025_3_3/hf030302" target="_blank" rel="noopener">Read paper ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="sec" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Skills</span>
+        <div><h2>What I work with.</h2></div>
+      </div>
+      <div class="skills">
+        <div><h3>AI and machine learning</h3><ul>
+          <li>Python</li><li>TensorFlow / Keras</li><li>TensorFlow Lite</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>Computer vision</li><li>NLP</li><li>Model evaluation</li></ul></div>
+        <div><h3>Data</h3><ul>
+          <li>Pandas, NumPy</li><li>SQL</li><li>Data cleaning</li><li>Exploratory analysis</li><li>Feature engineering</li><li>Plotly, Matplotlib</li><li>Power BI, Tableau</li><li>Excel</li></ul></div>
+        <div><h3>Software and design</h3><ul>
+          <li>JavaScript</li><li>React, Electron</li><li>HTML, CSS</li><li>SQLite</li><li>REST APIs</li><li>Git, GitHub</li><li>Figma</li><li>UI/UX design</li></ul></div>
+        <div><h3>Engineering</h3><ul>
+          <li>Biomedical engineering</li><li>Edge AI on Raspberry Pi</li><li>Hardware and software integration</li><li>Equipment maintenance and calibration</li><li>Agile, Scrum</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="label">Contact</span>
+      <h2 style="margin-top:18px">Have a project in mind? <span>Let’s talk.</span></h2>
+      <p class="lede">I take on freelance work in web design, machine learning and data analysis, and I’m open to part-time roles in Waterloo or remote. Send a short note about what you need and I’ll reply within a day.</p>
+      <div class="channels">
+        <div>
+          <span class="label">Email</span>
+          <div class="v"><span id="email">sultanatanda123@gmail.com</span><button class="copy" id="copy-email" type="button">Copy</button></div>
+        </div>
+        <a href="https://www.linkedin.com/in/sultan-atanda-gmnse-421943223" target="_blank" rel="noopener">
+          <span class="label">LinkedIn</span>
+          <div class="v">sultan-atanda ↗</div>
+        </a>
+        <a href="https://github.com/kinghighshow" target="_blank" rel="noopener">
+          <span class="label">GitHub</span>
+          <div class="v">kinghighshow ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Sultan Atanda · Waterloo, Ontario</span>
+    <nav aria-label="Social">
+      <a href="https://github.com/kinghighshow" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/sultan-atanda-gmnse-421943223" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menu-btn'),links=document.getElementById('nav-links');
+  function set(open){links.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);btn.textContent=open?'Close':'Menu';}
+  btn.addEventListener('click',function(){set(!links.classList.contains('open'));});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){set(false);btn.focus();}});
+
+  var copy=document.getElementById('copy-email'),email=document.getElementById('email');
+  copy.addEventListener('click',function(){
+    var t=email.textContent;
+    function done(){copy.textContent='Copied';setTimeout(function(){copy.textContent='Copy';},1600);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(email);var s=getSelection();s.removeAllRanges();s.addRange(r);copy.textContent='Selected';}
+    try{navigator.clipboard.writeText(t).then(done,fallback);}catch(e){fallback();}
+  });
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
